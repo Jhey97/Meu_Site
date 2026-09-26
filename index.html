@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Henrique Cordeiro Vieira | Portfólio & Engenharia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        sp: {
+                            night: '#0B0F17',
+                            concrete: '#141A26',
+                            card: '#1C2433',
+                            border: '#2A354A',
+                            cyan: '#00D8F6',
+                            purple: '#8A2BE2',
+                            amber: '#F59E0B',
+                            emerald: '#10B981'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B0F17; }
+        ::-webkit-scrollbar-thumb { background: #2A354A; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3B4863; }
+
+        .sp-bg-overlay {
+            background-image: 
+                linear-gradient(to bottom, rgba(11, 15, 23, 0.88), rgba(11, 15, 23, 0.98)),
+                url('https://images.unsplash.com/photo-1578091879915-33ee869e2cd7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .sp-bridge-bg {
+            background-image: 
+                linear-gradient(to right, rgba(11, 15, 23, 0.94), rgba(11, 15, 23, 0.88)),
+                url('https://images.unsplash.com/photo-1543059080-f2943658d3a1?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glow-card {
+            transition: all 0.25s ease-out;
+        }
+        .glow-card:hover {
+            border-color: rgba(0, 216, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00D8F6 0%, #8A2BE2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-grid-pattern {
+            background-image: radial-gradient(rgba(0, 216, 246, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+    </style>
+</head>
+<body class="tech-grid-pattern antialiased text-gray-200">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F17]/90 backdrop-blur-md border-b border-sp-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="font-mono text-base font-bold flex items-center gap-1.5 hover:opacity-90 transition-opacity">
+                    <span class="text-sp-cyan">&lt;</span>
+                    <span class="text-white">José Henrique</span>
+                    <span class="text-gray-400 font-normal">.dev</span>
+                    <span class="text-sp-cyan">&gt;</span>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-5 text-xs font-mono">
+                    <a href="#sobre" class="text-gray-300 hover:text-sp-cyan transition-colors">/sobre</a>
+                    <a href="#sys-monitor" class="text-gray-300 hover:text-sp-cyan transition-colors">/monitor-visitante</a>
+                    <a href="#bancada-iot" class="text-gray-300 hover:text-sp-cyan transition-colors">/simulador-bancada</a>
+                    <a href="#certificacoes" class="text-gray-300 hover:text-sp-cyan transition-colors">/certificacoes</a>
+                    <a href="#projetos" class="text-gray-300 hover:text-sp-cyan transition-colors">/projetos</a>
+                    <a href="#conhecimentos" class="text-gray-300 hover:text-sp-cyan transition-colors">/base-tecnica</a>
+                    <a href="#contato" class="text-gray-300 hover:text-sp-cyan transition-colors">/contato</a>
+                </nav>
+
+                <div class="hidden sm:flex items-center gap-2 bg-sp-card border border-sp-border px-3 py-1 rounded-full text-xs font-mono">
+                    <i class="fa-solid fa-location-dot text-sp-cyan"></i>
+                    <span class="text-gray-300">São Paulo, SP</span>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-sp-concrete border-b border-sp-border px-4 py-3 space-y-2 font-mono text-xs">
+            <a href="#sobre" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/sobre</a>
+            <a href="#sys-monitor" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/monitor-visitante</a>
+            <a href="#bancada-iot" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/simulador-bancada</a>
+            <a href="#certificacoes" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/certificacoes</a>
+            <a href="#projetos" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/projetos</a>
+            <a href="#conhecimentos" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/base-tecnica</a>
+            <a href="#contato" class="mobile-link block text-gray-300 hover:text-sp-cyan py-1">/contato</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section id="sobre" class="min-h-[88vh] flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-12 sp-bg-overlay">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-10 items-center relative z-10">
+                
+                <!-- Foto de Perfil / Upload do Usuário -->
+                <div class="md:col-span-5 flex flex-col items-center justify-center">
+                    <div class="relative group">
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-sp-border bg-sp-card flex items-center justify-center relative shadow-2xl">
+                            <img id="profile-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="José Henrique Cordeiro Vieira" class="w-full h-full object-cover">
+                            
+                            <label for="profile-upload" class="absolute inset-0 bg-sp-night/85 text-white flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-center p-3">
+                                <i class="fa-solid fa-camera text-3xl text-sp-cyan mb-2"></i>
+                                <span class="text-xs font-semibold">Atualizar Foto</span>
+                                <span class="text-[10px] text-gray-400 mt-1">Clique para carregar sua foto</span>
+                            </label>
+                            <input type="file" id="profile-upload" accept="image/*" class="hidden">
+                        </div>
+
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-sp-card border border-sp-border text-gray-300 px-3.5 py-1 rounded-full text-[11px] font-mono whitespace-nowrap shadow-md flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Em Evolução Contínua
+                        </div>
+                    </div>
+
+                    <p class="mt-6 text-xs font-mono text-gray-400 text-center flex items-center gap-1.5">
+                        <i class="fa-solid fa-graduation-cap text-sp-cyan"></i>
+                        Engenharia da Computação & ADS
+                    </p>
+                </div>
+
+                <!-- Apresentação Principal -->
+                <div class="md:col-span-7 space-y-5 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sp-card border border-sp-border text-xs font-mono text-sp-cyan">
+                        <span>// Dupla Graduação em Tecnologia</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        José Henrique <br/>
+                        <span class="gradient-text">Cordeiro Vieira</span>
+                    </h1>
+
+                    <div class="p-4 rounded-xl bg-sp-concrete border border-sp-border text-gray-300 text-sm leading-relaxed space-y-2">
+                        <p>
+                            Estudante focado em <strong class="text-white">Engenharia da Computação</strong> e <strong class="text-white">Análise e Desenvolvimento de Sistemas</strong> em São Paulo.
+                        </p>
+                        <p class="text-xs text-gray-400">
+                            Dedicação diária na consolidação de fundamentos: do desenvolvimento de software backend com Python (FastAPI), aplicações mobile em Flutter, até a lógica de programação de baixo nível em C/C++ e microcontroladores.
+                        </p>
+                    </div>
+
+                    <!-- Tags Rápidas -->
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start font-mono text-[11px] text-gray-300">
+                        <span class="bg-sp-card px-2.5 py-1 rounded border border-sp-border"><i class="fa-solid fa-code text-sp-cyan mr-1"></i> Python & C/C++</span>
+                        <span class="bg-sp-card px-2.5 py-1 rounded border border-sp-border"><i class="fa-solid fa-mobile-screen text-sp-purple mr-1"></i> Flutter</span>
+                        <span class="bg-sp-card px-2.5 py-1 rounded border border-sp-border"><i class="fa-solid fa-microchip text-sp-amber mr-1"></i> Arduino / IoT</span>
+                        <span class="bg-sp-card px-2.5 py-1 rounded border border-sp-border"><i class="fa-solid fa-database text-emerald-400 mr-1"></i> PostgreSQL</span>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2 justify-center md:justify-start">
+                        <a href="#contato" class="px-5 py-2.5 bg-sp-cyan hover:bg-cyan-400 text-black font-bold text-xs rounded-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Entrar em Contato
+                        </a>
+                        <a href="#certificacoes" class="px-5 py-2.5 bg-sp-card hover:bg-sp-concrete border border-sp-border text-gray-200 font-medium text-xs rounded-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-certificate text-sp-amber"></i> Certificações
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="sys-monitor" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="mb-8">
+                <div class="flex items-center gap-2">
+                    <span class="text-sp-cyan font-mono text-xs font-semibold uppercase">// Web API Telemetry</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Monitor do Seu Dispositivo em Tempo Real</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1 leading-relaxed">
+                    Métricas técnicas obtidas diretamente das Web APIs do seu navegador para inspecionar o ambiente cliente em tempo real.
+                </p>
+            </div>
+
+            <div class="bg-sp-concrete border border-sp-border rounded-xl p-5 sm:p-6 shadow-xl space-y-6">
+                <!-- Cabeçalho do Monitor -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-sp-border font-mono">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-sp-cyan/10 text-sp-cyan rounded-lg text-lg">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-white text-sm">Telemetria Client-Side</h3>
+                                <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] px-2 py-0.5 rounded">Ativo</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400">Leitura direta via <span class="text-sp-cyan">Navigator & WebGL</span></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 text-xs">
+                        <div class="bg-sp-card border border-sp-border px-3 py-1.5 rounded flex items-center gap-2">
+                            <span class="text-gray-400">FPS Render:</span>
+                            <span id="sys-fps-val" class="font-bold text-sp-cyan text-sm">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid de Indicadores -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 font-mono">
+                    
+                    <!-- Cores/Threads -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-microchip text-sp-cyan mr-1"></i> CPU / Threads</span>
+                            <span class="text-[10px] text-gray-500">concurrency</span>
+                        </div>
+                        <div class="text-xl font-bold text-white" id="sys-cpu-cores">--</div>
+                        <p class="text-[11px] text-gray-400">Threads lógicas para execução do script.</p>
+                    </div>
+
+                    <!-- Memória RAM -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-memory text-sp-purple mr-1"></i> Memória RAM</span>
+                            <span class="text-[10px] text-gray-500">deviceMemory</span>
+                        </div>
+                        <div class="text-xl font-bold text-white" id="sys-ram-val">--</div>
+                        <p class="text-[11px] text-gray-400">Capacidade RAM aproximada disponível.</p>
+                    </div>
+
+                    <!-- Placa de Vídeo -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2 sm:col-span-2 lg:col-span-1">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-vr-cardboard text-sp-amber mr-1"></i> Renderizador GPU</span>
+                            <span class="text-[10px] text-gray-500">WebGL Info</span>
+                        </div>
+                        <div class="text-xs font-bold text-white truncate" id="sys-gpu-val">Detectando GPU...</div>
+                        <p class="text-[11px] text-gray-400 truncate" id="sys-gpu-vendor">Vendor: --</p>
+                    </div>
+
+                    <!-- Rede / Conexão -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-wifi text-emerald-400 mr-1"></i> Conexão / Rede</span>
+                            <span class="text-[10px] text-gray-500">NetworkInfo</span>
+                        </div>
+                        <div class="text-base font-bold text-white" id="sys-net-type">--</div>
+                        <div class="flex justify-between text-[11px] text-gray-400 pt-1 border-t border-sp-border/50">
+                            <span>Velocidade: <strong id="sys-net-speed" class="text-gray-200">--</strong></span>
+                            <span>RTT: <strong id="sys-net-rtt" class="text-gray-200">--</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Bateria -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-battery-half text-sp-cyan mr-1"></i> Nível de Bateria</span>
+                            <span class="text-[10px] text-gray-500">Battery API</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xl font-bold text-white" id="sys-bat-val">--</span>
+                            <span class="text-[11px] px-2 py-0.5 rounded bg-sp-concrete border border-sp-border text-gray-300" id="sys-bat-status">Verificando...</span>
+                        </div>
+                        <div class="w-full bg-sp-concrete rounded-full h-1.5 overflow-hidden">
+                            <div id="sys-bat-bar" class="bg-sp-cyan h-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Display -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                        <div class="flex items-center justify-between text-gray-400 text-xs">
+                            <span><i class="fa-solid fa-desktop text-sp-purple mr-1"></i> Resolução de Tela</span>
+                            <span class="text-[10px] text-gray-500">Screen API</span>
+                        </div>
+                        <div class="text-base font-bold text-white" id="sys-screen-res">--</div>
+                        <div class="flex justify-between text-[11px] text-gray-400 pt-1 border-t border-sp-border/50">
+                            <span>Pixel Ratio: <strong id="sys-screen-dpi" class="text-gray-200">--</strong></span>
+                            <span>Cores: <strong id="sys-screen-color" class="text-gray-200">--</strong></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Gráfico de Desempenho FPS -->
+                <div class="bg-sp-card p-4 rounded-lg border border-sp-border space-y-2">
+                    <div class="flex items-center justify-between font-mono text-xs text-gray-400">
+                        <span><i class="fa-solid fa-chart-line text-sp-cyan mr-1"></i> Estabilidade da Renderização do Navegador</span>
+                        <span class="text-[10px] text-emerald-400">Live requestAnimationFrame</span>
+                    </div>
+                    <div class="h-32 relative">
+                        <canvas id="fpsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bancada-iot" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="mb-8">
+                <span class="text-sp-cyan font-mono text-xs font-semibold uppercase">// Prática com Microcontroladores</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Simulador de Bancada IoT / Arduino</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">
+                    Demonstração interativa de leitura analógica/digital com atualização de estado e código C/C++ correspondente.
+                </p>
+            </div>
+
+            <div class="bg-sp-concrete border border-sp-border rounded-xl p-5 sm:p-6 shadow-lg">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-sp-border">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-sp-cyan/10 text-sp-cyan rounded-lg text-lg">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-sm">Circuito de Testes (Arduino Uno / ESP32)</h3>
+                            <p class="text-[11px] text-gray-400 font-mono">Estado: <span class="text-emerald-400">Em Execução</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Seleção de Sensores -->
+                    <div class="flex items-center gap-2 font-mono text-xs">
+                        <button onclick="setBenchSensor('ldr')" id="btn-sens-ldr" class="px-3 py-1.5 rounded bg-sp-cyan text-black font-semibold transition-all">Sensor LDR (Luz)</button>
+                        <button onclick="setBenchSensor('temp')" id="btn-sens-temp" class="px-3 py-1.5 rounded bg-sp-card border border-sp-border text-gray-300 hover:text-white transition-all">Sensor Temp (LM35)</button>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4 my-6">
+                    <!-- Valor Atual -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border">
+                        <span class="text-[11px] font-mono text-gray-400">Leitura Analógica (A0)</span>
+                        <div class="text-2xl font-extrabold text-sp-cyan font-mono mt-1" id="bench-val">682 ADC</div>
+                        <span class="text-[10px] text-gray-400 font-mono" id="bench-unit">Claridade Amb.: ~66%</span>
+                    </div>
+
+                    <!-- Atuador LED -->
+                    <div class="bg-sp-card p-4 rounded-lg border border-sp-border flex flex-col justify-between">
+                        <span class="text-[11px] font-mono text-gray-400">Saída Digital (Pino 13)</span>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-xs font-mono font-bold text-gray-400" id="led-status">LOW (Desligado)</span>
+                            <button onclick="toggleBenchLED()" id="led-btn" class="px-2.5 py-1 rounded bg-sp-concrete border border-sp-border text-gray-300 text-xs font-mono hover:border-sp-cyan transition-all">
+                                Alternar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Trecho de Código -->
+                    <div class="bg-sp-card p-3 rounded-lg border border-sp-border font-mono text-[10px] text-gray-300 overflow-x-auto">
+                        <span class="text-gray-500">// Código C++ compilado no chip</span>
+                        <pre class="mt-1 text-sp-cyan" id="bench-code">
+int val = analogRead(A0);
+if(val > 500) {
+  digitalWrite(13, HIGH);
+}</pre>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Oscilação do Sensor -->
+                <div class="bg-sp-card p-3 rounded-lg border border-sp-border h-48 relative">
+                    <canvas id="benchChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificacoes" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-sp-amber font-mono text-xs font-semibold uppercase">// Formação & Cursos</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Minhas Certificações</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-1">Conquistas acadêmicas e certificados acumulados durante a trajetória técnica.</p>
+                </div>
+
+                <button onclick="toggleCertForm()" class="px-4 py-2 bg-sp-amber hover:bg-amber-400 text-black font-bold text-xs rounded-lg font-mono transition-all flex items-center gap-2 self-start sm:self-auto">
+                    <i class="fa-solid fa-plus"></i> Adicionar Certificado
+                </button>
+            </div>
+
+            <!-- Formulário Dinâmico de Certificado (Oculto por padrão) -->
+            <div id="cert-form-container" class="hidden bg-sp-concrete border border-sp-border p-5 rounded-xl mb-8 space-y-4">
+                <h3 class="font-bold text-white text-sm font-mono flex items-center gap-2">
+                    <i class="fa-solid fa-file-circle-plus text-sp-amber"></i> Cadastrar Novo Certificado
+                </h3>
+                
+                <form id="cert-form" onsubmit="saveCertificate(event)" class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div>
+                        <label class="block text-gray-400 mb-1">Título do Curso / Certificado *</label>
+                        <input type="text" id="cert-title" required placeholder="Ex: Algoritmos e Estruturas de Dados" class="w-full bg-sp-card border border-sp-border rounded px-3 py-2 text-white focus:outline-none focus:border-sp-amber">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1">Instituição Emissora *</label>
+                        <input type="text" id="cert-issuer" required placeholder="Ex: DIO / Coursera / Faculdade" class="w-full bg-sp-card border border-sp-border rounded px-3 py-2 text-white focus:outline-none focus:border-sp-amber">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1">Ano de Conclusão</label>
+                        <input type="text" id="cert-year" placeholder="Ex: 2025" class="w-full bg-sp-card border border-sp-border rounded px-3 py-2 text-white focus:outline-none focus:border-sp-amber">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1">Carga Horária / Detalhes</label>
+                        <input type="text" id="cert-hours" placeholder="Ex: 60 horas" class="w-full bg-sp-card border border-sp-border rounded px-3 py-2 text-white focus:outline-none focus:border-sp-amber">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-gray-400 mb-1">Comprovante (Imagem / Print)</label>
+                        <input type="file" id="cert-image-file" accept="image/*" class="w-full bg-sp-card border border-sp-border rounded px-3 py-1.5 text-gray-300 focus:outline-none">
+                    </div>
+                    <div class="sm:col-span-2 flex justify-end gap-2 pt-2">
+                        <button type="button" onclick="toggleCertForm()" class="px-3 py-1.5 bg-sp-card border border-sp-border text-gray-300 rounded hover:bg-sp-night">Cancelar</button>
+                        <button type="submit" class="px-4 py-1.5 bg-sp-amber text-black font-bold rounded hover:bg-amber-400">Salvar Certificado</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Galeria de Certificados -->
+            <div id="cert-gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Certificados padrão serão renderizados via JS -->
+            </div>
+        </section>
+
+        <section id="projetos" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="mb-8">
+                <span class="text-sp-purple font-mono text-xs font-semibold uppercase">// Projetos Práticos</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Estudos & Aplicações Desenvolvidas</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">Exemplos de aplicações práticas criadas durante a graduação e estudos autônomos.</p>
+            </div>
+
+            <!-- Grid de Projetos -->
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Mobile Flutter -->
+                <div class="glow-card bg-sp-concrete rounded-xl border border-sp-border overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 bg-sp-card overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="App Flutter" class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 right-2.5 bg-sp-night/90 text-sp-purple border border-sp-border text-[10px] font-mono px-2 py-0.5 rounded">Flutter / Dart</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-white mb-1.5">App Conecta Biblioteca / Acervo</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Aplicativo mobile desenvolvido em Flutter para gestão de leituras, integração com APIs REST e interfaces dinâmicas para o usuário.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 py-3 bg-sp-card/50 border-t border-sp-border flex items-center justify-between text-[11px] font-mono text-gray-400">
+                        <span><i class="fa-solid fa-mobile-screen mr-1"></i> Mobile Dev</span>
+                        <a href="https://github.com/Jhey97" target="_blank" class="text-sp-purple hover:underline">Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Arduino Embarcado -->
+                <div class="glow-card bg-sp-concrete rounded-xl border border-sp-border overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 bg-sp-card overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=800&q=80" alt="Projeto Arduino" class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 right-2.5 bg-sp-night/90 text-sp-amber border border-sp-border text-[10px] font-mono px-2 py-0.5 rounded">C++ / Arduino</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-white mb-1.5">Estação de Monitoramento de Bancada</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Circuito físico com leitura analógica de temperatura, acionamento automático de reles e envio de telemetria via Comunicação Serial.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 py-3 bg-sp-card/50 border-t border-sp-border flex items-center justify-between text-[11px] font-mono text-gray-400">
+                        <span><i class="fa-solid fa-microchip mr-1"></i> Hardware</span>
+                        <a href="https://github.com/Jhey97" target="_blank" class="text-sp-amber hover:underline">Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- API Python -->
+                <div class="glow-card bg-sp-concrete rounded-xl border border-sp-border overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 bg-sp-card overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="API Python" class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 right-2.5 bg-sp-night/90 text-sp-cyan border border-sp-border text-[10px] font-mono px-2 py-0.5 rounded">Python / FastAPI</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-white mb-1.5">API REST Backend com PostgreSQL</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Serviços backend com FastAPI, validação de dados com Pydantic, autenticação de usuários e rotas otimizadas em banco de dados relacional.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 py-3 bg-sp-card/50 border-t border-sp-border flex items-center justify-between text-[11px] font-mono text-gray-400">
+                        <span><i class="fa-solid fa-server mr-1"></i> Backend</span>
+                        <a href="https://github.com/Jhey97" target="_blank" class="text-sp-cyan hover:underline">Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                    </div>
+                </div>
+
+                <!-- Estruturas de Dados -->
+                <div class="glow-card bg-sp-concrete rounded-xl border border-sp-border overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 bg-sp-card overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=80" alt="Algoritmos C" class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 right-2.5 bg-sp-night/90 text-emerald-400 border border-sp-border text-[10px] font-mono px-2 py-0.5 rounded">Linguagem C</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-base font-bold text-white mb-1.5">Algoritmos de Estruturas de Dados</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Estudo prático de ponteiros, alocação dinâmica de memória, pilhas, filas e listas encadeadas diretamente na linguagem C.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 py-3 bg-sp-card/50 border-t border-sp-border flex items-center justify-between text-[11px] font-mono text-gray-400">
+                        <span><i class="fa-solid fa-terminal mr-1"></i> Ciência da Comp.</span>
+                        <a href="https://github.com/Jhey97" target="_blank" class="text-emerald-400 hover:underline">Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conhecimentos" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="mb-8">
+                <span class="text-sp-cyan font-mono text-xs font-semibold uppercase">// Conhecimentos Técnicos</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Base Técnica & Tecnologias</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">Linguagens e ferramentas utilizadas nos estudos e projetos.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-5">
+                <!-- Backend -->
+                <div class="bg-sp-concrete p-5 rounded-xl border border-sp-border">
+                    <div class="text-sp-cyan text-lg mb-3"><i class="fa-solid fa-code"></i></div>
+                    <h3 class="font-bold text-white text-sm mb-2">Software & Backend</h3>
+                    <ul class="text-xs font-mono text-gray-300 space-y-2">
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-cyan"></span> Python (FastAPI / Scripts)</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-cyan"></span> C / C++ (Algoritmos / Hardware)</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-cyan"></span> SQL (PostgreSQL & SQLite)</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-cyan"></span> Git & GitHub Versionamento</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile & Web -->
+                <div class="bg-sp-concrete p-5 rounded-xl border border-sp-border">
+                    <div class="text-sp-purple text-lg mb-3"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3 class="font-bold text-white text-sm mb-2">Mobile & Frontend</h3>
+                    <ul class="text-xs font-mono text-gray-300 space-y-2">
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-purple"></span> Flutter & Linguagem Dart</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-purple"></span> HTML5, CSS3 & JavaScript</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-purple"></span> Tailwind CSS Framework</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-purple"></span> Consumo de APIs RESTful</li>
+                    </ul>
+                </div>
+
+                <!-- Hardware & Engenharia -->
+                <div class="bg-sp-concrete p-5 rounded-xl border border-sp-border">
+                    <div class="text-sp-amber text-lg mb-3"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="font-bold text-white text-sm mb-2">Hardware & Engenharia</h3>
+                    <ul class="text-xs font-mono text-gray-300 space-y-2">
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-amber"></span> Prototipagem com Arduino Uno</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-amber"></span> Arquitetura de Computadores</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-amber"></span> Eletrônica Digital Básica</li>
+                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sp-amber"></span> Lógica de Sensores & Atuadores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-sp-border">
+            <div class="sp-bridge-bg rounded-2xl p-6 sm:p-10 border border-sp-border space-y-6">
+                <div>
+                    <span class="px-2.5 py-1 bg-sp-cyan/10 text-sp-cyan font-mono text-[11px] rounded border border-sp-cyan/20 inline-block mb-3">
+                        <i class="fa-solid fa-handshake mr-1"></i> Vamos Conversar
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                        Contatos Oficiais
+                    </h2>
+                    <p class="text-gray-300 text-xs sm:text-sm mt-1">
+                        Sinta-se à vontade para entrar em contato para oportunidades de estágio, vagas ou troca de conhecimentos técnicos.
+                    </p>
+                </div>
+
+                <!-- Grid de Contatos Solicitados -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+                    
+                    <!-- E-mail -->
+                    <a href="mailto:henriquecapao1997@gmail.com" class="p-4 bg-sp-card hover:bg-sp-concrete border border-sp-border hover:border-sp-cyan rounded-xl transition-all flex items-center gap-3.5 group">
+                        <div class="p-3 bg-sp-cyan/10 text-sp-cyan rounded-lg text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] text-gray-400 block">E-mail Pessoal</span>
+                            <span class="text-white font-semibold truncate block">henriquecapao1997@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5511939017608" target="_blank" rel="noopener noreferrer" class="p-4 bg-sp-card hover:bg-sp-concrete border border-sp-border hover:border-emerald-400 rounded-xl transition-all flex items-center gap-3.5 group">
+                        <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-lg text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] text-gray-400 block">WhatsApp / Telefone</span>
+                            <span class="text-white font-semibold block">(11) 93901-7608</span>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/henrique-vieira-774804361" target="_blank" rel="noopener noreferrer" class="p-4 bg-sp-card hover:bg-sp-concrete border border-sp-border hover:border-sp-purple rounded-xl transition-all flex items-center gap-3.5 group">
+                        <div class="p-3 bg-sp-purple/10 text-sp-purple rounded-lg text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] text-gray-400 block">LinkedIn Perfil</span>
+                            <span class="text-white font-semibold truncate block">henrique-vieira-774804361</span>
+                        </div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/Jhey97" target="_blank" rel="noopener noreferrer" class="p-4 bg-sp-card hover:bg-sp-concrete border border-sp-border hover:border-white rounded-xl transition-all flex items-center gap-3.5 group">
+                        <div class="p-3 bg-white/10 text-white rounded-lg text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] text-gray-400 block">GitHub Repositórios</span>
+                            <span class="text-white font-semibold truncate block">github.com/Jhey97</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Visualização de Certificado -->
+    <div id="cert-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-sp-concrete border border-sp-border max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl relative">
+            <button onclick="closeCertModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white bg-sp-card p-2 rounded-full z-10">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="p-4 bg-sp-card border-b border-sp-border">
+                <h3 id="modal-cert-title" class="font-bold text-white text-base">Título do Certificado</h3>
+                <p id="modal-cert-sub" class="text-xs text-gray-400 font-mono">Instituição - Ano</p>
+            </div>
+            <div class="p-4 flex justify-center bg-sp-night min-h-[250px] items-center">
+                <img id="modal-cert-img" src="" alt="Comprovante do Certificado" class="max-h-[70vh] object-contain rounded-lg">
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="py-6 border-t border-sp-border bg-sp-night">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500 font-mono">
+            <p>© 2026 José Henrique Cordeiro Vieira | São Paulo, SP</p>
+            <p class="flex items-center gap-1.5">
+                <span>Engenharia da Computação & ADS</span>
+                <i class="fa-solid fa-code text-sp-cyan"></i>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        // Upload Dinâmico da Foto de Perfil
+        const profileUpload = document.getElementById('profile-upload');
+        const profileImg = document.getElementById('profile-img');
+
+        profileUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    profileImg.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // ==========================================
+        // 1. MONITOR DO DISPOSITIVO DO VISITANTE
+        // ==========================================
+        function initSystemMonitor() {
+            // CPU Cores
+            const cores = navigator.hardwareConcurrency || 'N/A';
+            document.getElementById('sys-cpu-cores').innerText = typeof cores === 'number' ? `${cores} Threads Lógicas` : cores;
+
+            // RAM Estimada
+            const ram = navigator.deviceMemory || 'N/A';
+            document.getElementById('sys-ram-val').innerText = typeof ram === 'number' ? `~${ram} GB` : ram;
+
+            // GPU via WebGL
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl) {
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    if (debugInfo) {
+                        const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+                        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                        document.getElementById('sys-gpu-val').innerText = renderer || 'GPU Canvas Standard';
+                        document.getElementById('sys-gpu-vendor').innerText = `Vendor: ${vendor || 'Padrão'}`;
+                    } else {
+                        document.getElementById('sys-gpu-val').innerText = 'GPU WebGL Standard';
+                    }
+                } else {
+                    document.getElementById('sys-gpu-val').innerText = 'WebGL Não Suportado';
+                }
+            } catch (e) {
+                document.getElementById('sys-gpu-val').innerText = 'Acesso Gráfico Limitado';
+            }
+
+            // Rede
+            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (conn) {
+                document.getElementById('sys-net-type').innerText = (conn.effectiveType || 'online').toUpperCase();
+                document.getElementById('sys-net-speed').innerText = conn.downlink ? `${conn.downlink} Mbps` : 'N/A';
+                document.getElementById('sys-net-rtt').innerText = conn.rtt ? `${conn.rtt} ms` : 'N/A';
+            } else {
+                document.getElementById('sys-net-type').innerText = navigator.onLine ? 'ONLINE' : 'OFFLINE';
+                document.getElementById('sys-net-speed').innerText = 'N/A';
+                document.getElementById('sys-net-rtt').innerText = 'N/A';
+            }
+
+            // Bateria
+            if ('getBattery' in navigator) {
+                navigator.getBattery().then(function(battery) {
+                    function updateBattery() {
+                        const level = Math.round(battery.level * 100);
+                        document.getElementById('sys-bat-val').innerText = `${level}%`;
+                        document.getElementById('sys-bat-bar').style.width = `${level}%`;
+                        document.getElementById('sys-bat-status').innerText = battery.charging ? 'Carregando ⚡' : 'Em Bateria';
+                    }
+                    updateBattery();
+                    battery.addEventListener('levelchange', updateBattery);
+                    battery.addEventListener('chargingchange', updateBattery);
+                }).catch(() => {
+                    document.getElementById('sys-bat-val').innerText = 'Sem Acesso';
+                });
+            } else {
+                document.getElementById('sys-bat-val').innerText = 'Indisponível';
+                document.getElementById('sys-bat-status').innerText = 'API N/S';
+            }
+
+            // Tela
+            document.getElementById('sys-screen-res').innerText = `${window.screen.width} x ${window.screen.height} px`;
+            document.getElementById('sys-screen-dpi').innerText = `${window.devicePixelRatio || 1}x`;
+            document.getElementById('sys-screen-color').innerText = `${window.screen.colorDepth || 24}-bit`;
+
+            // Gráfico FPS
+            const ctxFps = document.getElementById('fpsChart').getContext('2d');
+            const fpsData = new Array(20).fill(60);
+            
+            const fpsChart = new Chart(ctxFps, {
+                type: 'line',
+                data: {
+                    labels: new Array(20).fill(''),
+                    datasets: [{
+                        label: 'FPS Real',
+                        data: fpsData,
+                        borderColor: '#00D8F6',
+                        backgroundColor: 'rgba(0, 216, 246, 0.05)',
+                        borderWidth: 1.5,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false,
+                    scales: {
+                        x: { display: false },
+                        y: { 
+                            min: 0, 
+                            max: 75,
+                            ticks: { color: '#64748B', font: { family: 'Fira Code', size: 9 } }, 
+                            grid: { color: 'rgba(255,255,255,0.05)' } 
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Loop FPS com requestAnimationFrame
+            let lastTime = performance.now();
+            let frameCount = 0;
+
+            function calcFps(now) {
+                frameCount++;
+                const delta = now - lastTime;
+
+                if (delta >= 500) {
+                    const currentFps = Math.min(Math.round((frameCount * 1000) / delta), 144);
+                    document.getElementById('sys-fps-val').innerText = `${currentFps} FPS`;
+                    
+                    fpsData.shift();
+                    fpsData.push(currentFps);
+                    fpsChart.update();
+
+                    frameCount = 0;
+                    lastTime = now;
+                }
+                requestAnimationFrame(calcFps);
+            }
+            requestAnimationFrame(calcFps);
+        }
+
+        // ==========================================
+        // 2. SIMULADOR DE BANCADA ARDUINO / IOT
+        // ==========================================
+        let currentBenchSensor = 'ldr';
+        let ledState = false;
+
+        const ctxBench = document.getElementById('benchChart').getContext('2d');
+        const benchChart = new Chart(ctxBench, {
+            type: 'line',
+            data: {
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'Atual'],
+                datasets: [{
+                    label: 'Leitura ADC (0 - 1023)',
+                    data: [610, 625, 640, 630, 670, 665, 682],
+                    borderColor: '#00D8F6',
+                    backgroundColor: 'rgba(0, 216, 246, 0.08)',
+                    borderWidth: 1.5,
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { ticks: { color: '#64748B', font: { family: 'Fira Code', size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#64748B', font: { family: 'Fira Code', size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#94A3B8', font: { family: 'Plus Jakarta Sans', size: 11 } } }
+                }
+            }
+        });
+
+        function setBenchSensor(type) {
+            currentBenchSensor = type;
+            const valElem = document.getElementById('bench-val');
+            const unitElem = document.getElementById('bench-unit');
+            const codeElem = document.getElementById('bench-code');
+            const btnLdr = document.getElementById('btn-sens-ldr');
+            const btnTemp = document.getElementById('btn-sens-temp');
+
+            if (type === 'ldr') {
+                btnLdr.className = "px-3 py-1.5 rounded bg-sp-cyan text-black font-semibold transition-all";
+                btnTemp.className = "px-3 py-1.5 rounded bg-sp-card border border-sp-border text-gray-300 hover:text-white transition-all";
+                valElem.innerText = "682 ADC";
+                unitElem.innerText = "Claridade Amb.: ~66%";
+                codeElem.innerText = `int val = analogRead(A0);\nif(val > 500) {\n  digitalWrite(13, HIGH);\n}`;
+                
+                benchChart.data.datasets[0].label = 'Luminosidade (ADC LDR)';
+                benchChart.data.datasets[0].data = [610, 625, 640, 630, 670, 665, 682];
+                benchChart.data.datasets[0].borderColor = '#00D8F6';
+            } else {
+                btnTemp.className = "px-3 py-1.5 rounded bg-sp-amber text-black font-semibold transition-all";
+                btnLdr.className = "px-3 py-1.5 rounded bg-sp-card border border-sp-border text-gray-300 hover:text-white transition-all";
+                valElem.innerText = "24.5 °C";
+                unitElem.innerText = "LM35 (10mV/°C)";
+                codeElem.innerText = `float lm35 = analogRead(A1);\nfloat temp = (lm35 * 5.0 / 1024.0) * 100;\nSerial.println(temp);`;
+
+                benchChart.data.datasets[0].label = 'Temperatura LM35 (°C)';
+                benchChart.data.datasets[0].data = [23.1, 23.5, 24.0, 24.2, 24.1, 24.3, 24.5];
+                benchChart.data.datasets[0].borderColor = '#F59E0B';
+            }
+            benchChart.update();
+        }
+
+        function toggleBenchLED() {
+            ledState = !ledState;
+            const ledStatus = document.getElementById('led-status');
+            const ledBtn = document.getElementById('led-btn');
+
+            if (ledState) {
+                ledStatus.innerText = "HIGH (Ligado)";
+                ledStatus.className = "text-xs font-mono font-bold text-emerald-400";
+                ledBtn.className = "px-2.5 py-1 rounded bg-emerald-500 text-black font-bold text-xs font-mono transition-all";
+            } else {
+                ledStatus.innerText = "LOW (Desligado)";
+                ledStatus.className = "text-xs font-mono font-bold text-gray-400";
+                ledBtn.className = "px-2.5 py-1 rounded bg-sp-concrete border border-sp-border text-gray-300 text-xs font-mono hover:border-sp-cyan transition-all";
+            }
+        }
+
+        // ==========================================
+        // 3. GESTÃO DE CERTIFICAÇÕES (LOCALSTORAGE)
+        // ==========================================
+        const defaultCertificates = [
+            {
+                id: 1,
+                title: "Algoritmos e Estruturas de Dados em C",
+                issuer: "Engenharia da Computação",
+                year: "2025",
+                hours: "80 horas",
+                img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                title: "Desenvolvimento Mobile com Flutter & Dart",
+                issuer: "Especialização Prática",
+                year: "2025",
+                hours: "60 horas",
+                img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                title: "Sistemas Embarcados e IoT com Arduino",
+                issuer: "Prototipagem de Hardware",
+                year: "2024",
+                hours: "40 horas",
+                img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        function getCertificates() {
+            const saved = localStorage.getItem('jh_certificates');
+            if (saved) {
+                try { return JSON.parse(saved); } catch(e) { return defaultCertificates; }
+            }
+            return defaultCertificates;
+        }
+
+        function renderCertificates() {
+            const certs = getCertificates();
+            const gallery = document.getElementById('cert-gallery');
+            gallery.innerHTML = '';
+
+            certs.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = "bg-sp-concrete border border-sp-border rounded-xl overflow-hidden glow-card flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="h-36 bg-sp-card relative overflow-hidden cursor-pointer" onclick="openCertModal('${cert.title}', '${cert.issuer} - ${cert.year}', '${cert.img}')">
+                            <img src="${cert.img}" alt="${cert.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <span class="absolute bottom-2 right-2 bg-sp-night/90 text-sp-amber text-[10px] font-mono px-2 py-0.5 rounded border border-sp-border">
+                                <i class="fa-solid fa-expand mr-1"></i> Expandir
+                            </span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h4 class="font-bold text-white text-sm leading-snug">${cert.title}</h4>
+                            <p class="text-xs text-sp-cyan font-mono">${cert.issuer}</p>
+                        </div>
+                    </div>
+                    <div class="px-4 py-2.5 bg-sp-card/60 border-t border-sp-border flex items-center justify-between text-[11px] font-mono text-gray-400">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> ${cert.year || 'N/A'}</span>
+                        <span class="text-gray-300">${cert.hours || 'Concluído'}</span>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        function toggleCertForm() {
+            const container = document.getElementById('cert-form-container');
+            container.classList.toggle('hidden');
+        }
+
+        function saveCertificate(event) {
+            event.preventDefault();
+            const title = document.getElementById('cert-title').value;
+            const issuer = document.getElementById('cert-issuer').value;
+            const year = document.getElementById('cert-year').value;
+            const hours = document.getElementById('cert-hours').value;
+            const fileInput = document.getElementById('cert-image-file');
+
+            const newCert = {
+                id: Date.now(),
+                title,
+                issuer,
+                year: year || '2026',
+                hours: hours || 'Certificado',
+                img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80"
+            };
+
+            function finalizeSave(imgData) {
+                if (imgData) newCert.img = imgData;
+                const currentList = getCertificates();
+                currentList.unshift(newCert);
+                localStorage.setItem('jh_certificates', JSON.stringify(currentList));
+                renderCertificates();
+                document.getElementById('cert-form').reset();
+                toggleCertForm();
+            }
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    finalizeSave(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                finalizeSave(null);
+            }
+        }
+
+        // Modal de Certificado
+        function openCertModal(title, sub, imgUrl) {
+            document.getElementById('modal-cert-title').innerText = title;
+            document.getElementById('modal-cert-sub').innerText = sub;
+            document.getElementById('modal-cert-img').src = imgUrl;
+            document.getElementById('cert-modal').classList.remove('hidden');
+        }
+
+        function closeCertModal() {
+            document.getElementById('cert-modal').classList.add('hidden');
+        }
+
+        // Inicialização global ao carregar a página
+        window.addEventListener('DOMContentLoaded', () => {
+            initSystemMonitor();
+            renderCertificates();
+        });
+    </script>
+</body>
+</html>
